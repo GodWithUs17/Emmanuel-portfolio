@@ -275,7 +275,7 @@ export default function Contact({ refProp }) {
       // Add token to your data
       const payload = { ...data, recaptchaToken: token };
 
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch("/api/contact", {
 
         method: "POST",
         headers: {
