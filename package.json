@@ -1,0 +1,8 @@
+{
+  "name": "emmanuel-portfolio-root",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd my-portfolio && npm install && npm run build",
+    "postinstall": "cd api && npm install && npx prisma generate"
+  }
+}
