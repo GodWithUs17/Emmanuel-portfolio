@@ -1,6 +1,7 @@
 const prisma = require("../utils/Prisma")
 const { transporter } = require("../config/mail")
 const verifyRecaptcha = require("../utils/verifyRecaptcha")
+import {waitUntil} from '@vercel/functions';
 
 
 exports.sendMessage = async (req, res) => {
@@ -33,11 +34,16 @@ exports.sendMessage = async (req, res) => {
 
   })
 
+     res.json({
+   success: true
+  })  
+
 
      // ---------------------------
     // 1️⃣ Email to yourself (Owner)
     // ---------------------------
-    await Promise.all([
+    waitUntil(
+     Promise.all([
      transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
@@ -80,12 +86,10 @@ exports.sendMessage = async (req, res) => {
       `,
     })
 
-    ]);
+    ])
+  );
 
 
-    res.json({
-   success: true
-  })  
 
 
  } catch (error) {
