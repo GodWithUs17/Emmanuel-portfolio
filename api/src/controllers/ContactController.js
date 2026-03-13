@@ -33,13 +33,11 @@ exports.sendMessage = async (req, res) => {
 
   })
 
-    res.json({
-   success: true
-  })
 
      // ---------------------------
     // 1️⃣ Email to yourself (Owner)
     // ---------------------------
+    await Promise.all([
      transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
@@ -56,12 +54,13 @@ exports.sendMessage = async (req, res) => {
           <p style="margin-top:20px; font-size:12px; color:#888;">This message was submitted from your portfolio contact form.</p>
         </div>
       `,
-    });
+    }),
 
 
        // ---------------------------
     // 2️⃣ Confirmation email to user
     // ---------------------------
+    
     transporter.sendMail({
       from: `"Emmanuel Oguntoke" <${process.env.EMAIL_USER}>`,
       to: email,
@@ -79,9 +78,14 @@ exports.sendMessage = async (req, res) => {
           <p style="font-size:12px; color:#888;">This is an automated confirmation email. Please do not reply directly to this email.</p>
         </div>
       `,
-    });
+    })
+
+    ]);
 
 
+    res.json({
+   success: true
+  })  
 
 
  } catch (error) {
