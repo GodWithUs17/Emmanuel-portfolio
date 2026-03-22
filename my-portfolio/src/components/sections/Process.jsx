@@ -23,7 +23,7 @@ export default function Process({ refProp }) {
   ];
 
   return (
-    <section ref={refProp} className="py-24 scroll-mt-20" id="process">
+    <section ref={refProp} className="py-24 scroll-mt-[50px]" id="process">
       <Container>
         <SectionTitle>
           How We Work

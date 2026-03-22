@@ -31,7 +31,7 @@ export default function Services({ refProp }) {
   ];
 
   return (
-    <section ref={refProp} className="py-24 bg-zinc-50 scroll-mt-20" id="services">
+    <section ref={refProp} className="py-24 bg-zinc-50 scroll-mt-[50px]" id="services">
       <Container>
         <SectionTitle>
           What I Build

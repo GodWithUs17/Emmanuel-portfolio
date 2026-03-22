@@ -102,7 +102,7 @@ const projects = [
 
 export default function PortfolioSection({refProp}) {
   return (
-    <section ref={refProp} className="py-24 bg-gray-50 scroll-mt-20"id="portfolio">
+    <section ref={refProp} className="py-[45px] bg-gray-50 scroll-mt-20"id="portfolio">
       <Container>
         <h2 className="text-3xl font-bold mb-2 text-center">My Portfolio</h2>
         <p className="text-center text-gray-600 mb-12">
