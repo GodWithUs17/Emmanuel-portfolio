@@ -103,3 +103,24 @@ exports.sendMessage = async (req, res) => {
  }
 
 }
+
+
+// Health check endpoint to wake up Supabase and ensure database connection is active
+
+exports.healthCheck = async (req, res) => {
+  try {
+    // This is the "Wake Up" call to Supabase
+    await prisma.$queryRaw`SELECT 1`;
+    
+    res.status(200).json({
+      success: true,
+      status: "Database is active"
+    });
+  } catch (error) {
+    console.error("Health check failed:", error);
+    res.status(500).json({
+      success: false,
+      error: "Database connection failed"
+    });
+  }
+};
