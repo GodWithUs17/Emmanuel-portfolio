@@ -119,12 +119,27 @@ export default function Navbar({ refs, scrollTo }) {
     setIndicatorStyle({ left: offsetLeft, width: offsetWidth });
   };
 
-  // Handle click on nav link
+  // // Handle click on nav link
+  // const handleClick = (sectionRef, linkRef, id) => {
+  //   scrollTo(sectionRef);
+  //   setActive(id);
+  //   moveIndicator(linkRef);
+  //   setMenuOpen(false);
+  // };
+
   const handleClick = (sectionRef, linkRef, id) => {
-    scrollTo(sectionRef);
-    setActive(id);
-    moveIndicator(linkRef);
+    // 1. Close the menu FIRST to fix the header height
     setMenuOpen(false);
+
+    // 2. Update your UI states
+    setActive(id);
+    if (linkRef) moveIndicator(linkRef);
+
+    // 3. Wait 10ms for the menu to actually vanish from the DOM 
+    // before calculating the scroll position
+    setTimeout(() => {
+      scrollTo(sectionRef);
+    }, 10);
   };
 
   // Update indicator on scroll
@@ -282,7 +297,7 @@ export default function Navbar({ refs, scrollTo }) {
           <button onClick={() => handleClick(refs.process, processRef, "process")}>Process</button>
           <button onClick={() => handleClick(refs.portfolio, portfolioRef, "portfolio")}>Projects</button>
           <button
-            onClick={() => handleClick(refs.contact)}
+            onClick={() => handleClick(refs.contact, null, "contact")}
             className="bg-blue-600 text-white px-4 py-2 rounded-md text-center"
           >
             Contact
