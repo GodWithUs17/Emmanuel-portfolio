@@ -1,0 +1,6 @@
+# Allow all search engines and AI bots to index the site
+User-agent: *
+Allow: /
+
+# Help them find your sitemap (Update with your real URL)
+Sitemap: https://emmanuel-portfolio-flame.vercel.app/sitemap.xml

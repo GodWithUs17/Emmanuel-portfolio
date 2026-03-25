@@ -1,59 +1,7 @@
-// import Container from "../ui/Container";
-// import SectionTitle from "../ui/SectionTitle";
-// import Card from "../ui/Card";
-// import Button from "../ui/Button";
-
-// export default function Projects() {
-//   const projects = [
-//     {
-//       title: "Manual Purchasing Platform",
-//       bullets: [
-//         "Streamlined manual buying process",
-//         "Improved system structure",
-//         "Better user flow clarity"
-//       ],
-//     },
-//     {
-//       title: "Landing Page Rebuild",
-//       bullets: [
-//         "Clear messaging hierarchy",
-//         "Improved layout structure",
-//         "Mobile-first redesign"
-//       ],
-//     },
-//   ];
-
-//   return (
-//     <section className="py-20 bg-zinc-50" id="projects">
-//       <Container>
-//         <SectionTitle>
-//           Selected Work
-//         </SectionTitle>
-
-//         <div className="space-y-6 md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
-//           {projects.map((project, index) => (
-//             <Card
-//               key={index}
-//               title={project.title}
-//               bullets={project.bullets}
-//             />
-//           ))}
-//         </div>
-
-//         <div className="text-center mt-10">
-//           <Button variant="secondary">
-//             View More Projects →
-//           </Button>
-//         </div>
-//       </Container>
-//     </section>
-//   );
-// }
-
 import Container from "./../ui/Container";
-import projectImage1 from '../assets/SKILL.avif';
-import projectImage2 from '../assets/Mennac.avif';
-import projectImage3 from '../assets/ManualApp.avif';
+import projectImage1 from '../assets/SKILL.webp';
+import projectImage2 from '../assets/Mennac.webp';
+import projectImage3 from '../assets/ManualApp.webp';
 
 
 
@@ -118,6 +66,7 @@ export default function PortfolioSection({refProp}) {
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">

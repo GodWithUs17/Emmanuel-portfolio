@@ -1,7 +1,7 @@
 
 import Container from "../ui/Container";
 import Button from "../ui/Button";
-import profile from "../assets/profile.png";
+import profile from "../assets/Profile.webp";
 
 export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, moveIndicator, setActive }) {
   return (
@@ -61,6 +61,8 @@ export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, move
               <img
                 src={profile}
                 alt="Emmanuel Oguntoke"
+                fetchPriority="high"
+                loading="eager"
                 className="w-60 h-60 md:w-72 md:h-72 object-cover rounded-full border-4 border-white shadow-lg"
               />
             </div>

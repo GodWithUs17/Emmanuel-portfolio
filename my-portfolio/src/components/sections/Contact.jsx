@@ -84,22 +84,22 @@ export default function Contact({ refProp }) {
         setStatusType("success");             // ✅ NEW
         e.target.reset();
 
-        // Clear message after 5 seconds
+        // Clear message after 3 seconds
         setTimeout(() => {
           setStatusMessage("");
           setStatusType("");
-        }, 5000);
+        }, 3000);
 
       } else {
 
         setStatusMessage("Something went wrong.");
         setStatusType("error");
 
-        // Clear message after 5 seconds
+        // Clear message after 3 seconds
         setTimeout(() => {
           setStatusMessage("");
           setStatusType("");
-        }, 5000);
+        }, 3000);
 
       }
 
@@ -108,11 +108,11 @@ export default function Contact({ refProp }) {
       setStatusMessage("Network error. Please try again.");
       setStatusType("error");
 
-      // Clear message after 5 seconds
+      // Clear message after 3 seconds
       setTimeout(() => {
         setStatusMessage("");
         setStatusType("");
-      }, 5000);
+      }, 3000);
 
     }
 
