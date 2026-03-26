@@ -140,7 +140,7 @@ export default function Contact({ refProp }) {
 
           <div className="w-16 h-1 bg-purple-600 mx-auto mt-4 rounded"></div>
 
-          <p className="text-zinc-600 text-sm sm:text-base lg:text-lg mt-3 max-w-xl mx-auto">
+          <p className="text-zinc-700 text-sm sm:text-base lg:text-lg mt-3 max-w-xl mx-auto">
             Tell me about your project — I'll respond within 24 hours.
           </p>
 
@@ -156,7 +156,7 @@ export default function Contact({ refProp }) {
               Let's Work Together
             </h3>
 
-            <p className="text-zinc-600 mb-10 leading-relaxed">
+            <p className="text-zinc-700 mb-10 leading-relaxed">
               I'm available for freelance and full-time opportunities.
               If you have a project idea or want to build something impactful,
               feel free to reach out.
@@ -172,7 +172,7 @@ export default function Contact({ refProp }) {
 
                 <div>
                   <p className="font-semibold text-zinc-900">Email</p>
-                  <p className="text-zinc-600">oguntokeemmanuel57@gmail.com</p>
+                  <p className="text-zinc-700">oguntokeemmanuel57@gmail.com</p>
                 </div>
 
               </div>
@@ -185,7 +185,7 @@ export default function Contact({ refProp }) {
 
                 <div>
                   <p className="font-semibold text-zinc-900">Phone</p>
-                  <p className="text-zinc-600">+234 902 226 6417</p>
+                  <p className="text-zinc-700">+234 902 226 6417</p>
                 </div>
 
               </div>
@@ -198,7 +198,7 @@ export default function Contact({ refProp }) {
 
                 <div>
                   <p className="font-semibold text-zinc-900">Location</p>
-                  <p className="text-zinc-600">Lagos, Nigeria</p>
+                  <p className="text-zinc-700">Lagos, Nigeria</p>
                 </div>
 
               </div>
@@ -268,21 +268,6 @@ export default function Contact({ refProp }) {
 
               </div>
 
-              {/* <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-[#1F6BFF] text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition"
-              >
-                {loading ? (
-                  <> */}
-                    {/* ✅ Loading Spinner */}
-                    {/* <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                    Sending...
-                  </>
-                ) : (
-                  "Send Message"
-                )}
-              </button> */}
 
             <button
               type="submit"

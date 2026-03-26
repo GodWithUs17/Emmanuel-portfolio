@@ -20,7 +20,7 @@ export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, move
               Websites Built to Convert Visitors Into Customers
             </h1>
 
-            <p className="text-base md:text-lg text-zinc-600 leading-relaxed">
+            <p className="text-base md:text-lg text-zinc-800 leading-relaxed">
               I design and develop fast, scalable websites that help businesses
               attract customers and grow online.
             </p>
@@ -49,7 +49,7 @@ export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, move
               </Button>
             </div>
 
-            <p className="text-sm sm:text-base md:text-base lg:text-base text-zinc-500 pt-2 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base md:text-base lg:text-base text-zinc-800 pt-2 max-w-xl mx-auto">
               Built with performance, usability, and scalability in mind.
             </p>
 
@@ -60,6 +60,8 @@ export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, move
             <div className="p-2 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500">
               <img
                 src={profile}
+                width="450"
+                height="450"
                 alt="Emmanuel Oguntoke"
                 fetchPriority="high"
                 loading="eager"

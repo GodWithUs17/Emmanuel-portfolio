@@ -30,22 +30,7 @@ const projects = [
     image: projectImage3,
     link: "#",
   },
-  // {
-  //   id: 4,
-  //   title: "Crear Testing Redesign",
-  //   description: "Comparative testing redesign with improved UX flow.",
-  //   tags: ["UX/UI", "Testing", "Figma"],
-  //   image: "/images/crear.png",
-  //   link: "#",
-  // },
-  // {
-  //   id: 5,
-  //   title: "User Testing Project",
-  //   description: "Comprehensive user testing and feedback implementation.",
-  //   tags: ["User Testing", "Figma"],
-  //   image: "/images/usertesting.png",
-  //   link: "#",
-  // },
+
 ];
 
 export default function PortfolioSection({refProp}) {
@@ -53,7 +38,7 @@ export default function PortfolioSection({refProp}) {
     <section ref={refProp} className="py-[45px] bg-gray-50 scroll-mt-20"id="portfolio">
       <Container>
         <h2 className="text-3xl font-bold mb-2 text-center">My Portfolio</h2>
-        <p className="text-center text-gray-600 mb-12">
+        <p className="text-center text-gray-700 mb-12">
           A selection of projects I've worked on. Click to explore more.
         </p>
 
@@ -65,13 +50,15 @@ export default function PortfolioSection({refProp}) {
             >
               <img
                 src={project.image}
+                width="700"
+                height="400"
                 alt={project.title}
                 loading="lazy"
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
                 <h3 className="font-semibold text-lg mb-2">{project.title}</h3>
-                <p className="text-gray-600 text-sm mb-3">{project.description}</p>
+                <p className="text-gray-700 text-sm mb-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.tags.map((tag) => (
                     <span

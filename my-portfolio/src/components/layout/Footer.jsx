@@ -10,7 +10,7 @@ export default function Footer() {
             Ready to build something great?
           </h2>
 
-          <p className="mt-4 text-slate-400 text-base max-w-md mx-auto">
+          <p className="mt-4 text-slate-200 text-base max-w-md mx-auto">
             I'm available for freelance projects and collaborations.
           </p>
 
@@ -32,18 +32,19 @@ export default function Footer() {
             Emmanuel<span className="text-purple-500"> Oguntoke</span>
           </h3>
 
-          <p className="text-gray-500 text-sm mt-3 max-w-sm mx-auto leading-relaxed">
+          <p className="text-gray-200 text-sm mt-3 max-w-sm mx-auto leading-relaxed">
             Building high-converting websites and scalable web applications
             for growing businesses.
           </p>
 
           {/* Social Icons */}
-          <div className="flex justify-center gap-3 mt-10">
+          <div className="flex justify-center gap-3 mt-7">
   
   {/* GitHub */}
   <div className="group relative flex flex-col items-center">
     <a
       href="https://github.com/GodWithUs17"
+      aria-label="View my Github Profile"
       className="w-7 h-7 flex items-center justify-center bg-white rounded-full text-zinc-900 shadow-lg transition-all duration-300 hover:bg-purple-600 hover:text-white hover:-translate-y-1"
     >
       <i className="ri-github-line text-xl"></i>
@@ -58,6 +59,7 @@ export default function Footer() {
   <div className="group relative flex flex-col items-center">
     <a
       href="https://www.linkedin.com/in/oguntoke-emmanuel/"
+      aria-label="View my LinkedIn Profile"
       className="w-7 h-7 flex items-center justify-center bg-white rounded-full text-zinc-900 shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white hover:-translate-y-1"
     >
       <i className="ri-linkedin-line text-xl"></i>
@@ -71,6 +73,8 @@ export default function Footer() {
   <div className="group relative flex flex-col items-center">
     <a
       href="https://x.com/Godwithus_17"
+      aria-label="View my Twitter Profile"
+
       className="w-7 h-7 flex items-center justify-center bg-white rounded-full text-zinc-900 shadow-lg transition-all duration-300 hover:bg-black hover:text-white hover:-translate-y-1"
     >
       <i className="ri-twitter-x-line text-xl"></i>
@@ -81,7 +85,7 @@ export default function Footer() {
   </div>
 
    </div>
-   <p className="text-gray-600 text-xs mt-10 border-t border-white/5 pt-8">
+   <p className="text-gray-200 text-xs mt-10 border-t border-white/5 pt-8">
             © {new Date().getFullYear()} Emmanuel Oguntoke. All rights reserved.
           </p>
   </div>
