@@ -50,7 +50,7 @@ export default function PortfolioSection({refProp}) {
             >
               <img
                 src={project.image}
-                width="700"
+                width="600"
                 height="400"
                 alt={project.title}
                 loading="lazy"
@@ -71,6 +71,7 @@ export default function PortfolioSection({refProp}) {
                 </div>
                 <a
                   href={project.link}
+                  aria-label={`View details for ${project.title}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 font-medium hover:underline"
