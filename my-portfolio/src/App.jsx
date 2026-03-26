@@ -45,7 +45,7 @@ function App() {
         setActive={setActive}
         setMoveIndicator={setMoveIndicator} // 🔵 Pass setter so Hero can call moveIndicator
       />
-
+    <main>
       <Hero
         refProp={homeRef}
         scrollTo={scrollTo}
@@ -59,6 +59,7 @@ function App() {
       <PortfolioSection refProp={portfolioRef}/>
       <Process refProp={processRef}/>
       <Contact refProp={contactRef}/>
+     </main> 
       <Footer/>
     </>
   );
