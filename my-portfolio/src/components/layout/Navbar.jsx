@@ -70,9 +70,8 @@ export default function Navbar({ refs, scrollTo }) {
   return (
     <nav className="w-full border-b bg-white sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl tracking-tighter cursor-pointer transition-all duration-500
-  bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent 
-  hover:from-purple-500">
+        <h1 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl tracking-tighter transition-all duration-500
+          bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent ">
           Emmanuel Oguntoke
         </h1>
 
@@ -179,11 +178,29 @@ export default function Navbar({ refs, scrollTo }) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col px-4 pb-4 gap-4 text-sm">
-          <button onClick={() => handleClick(refs.home, homeRef, "home")}>Home</button>
-          <button onClick={() => handleClick(refs.services, servicesRef, "services")}>Services</button>
-          <button onClick={() => handleClick(refs.process, processRef, "process")}>Process</button>
-          <button onClick={() => handleClick(refs.portfolio, portfolioRef, "portfolio")}>Projects</button>
+        <div className="md:hidden flex flex-col px-4 pb-4 gap-[12px] text-sm">
+          <button onClick={() => handleClick(refs.home, homeRef, "home")} 
+          className="bg-purple-50 py-[8px] px-2 rounded-lg"
+            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "home" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
+            >Home</button>
+          <button onClick={() => handleClick(refs.services, servicesRef, "services")}
+            className="bg-purple-50 py-[8px] px-2 rounded-lg" 
+            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "services" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
+          >
+            Services
+          </button>
+          <button onClick={() => handleClick(refs.process, processRef, "process")} 
+            className="bg-purple-50 py-[8px] px-2 rounded-lg"
+            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "process" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
+          >
+            Process
+          </button>
+          <button onClick={() => handleClick(refs.portfolio, portfolioRef, "portfolio")}
+            className="bg-purple-50 py-[8px] px-2 rounded-lg" 
+            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "portfolio" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
+          >
+            Projects
+          </button>
           <button
             onClick={() => handleClick(refs.contact, null, "contact")}
             className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-4 py-2 rounded-md text-center"
