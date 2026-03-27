@@ -3,12 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/webp" sizes="64x64" href="/favicon.webp" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" as="style" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+<link 
+  rel="preload" 
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" 
+  as="style" 
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+</noscript>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emmanuel Oguntoke | Full-Stack Web Developer</title>
-    <link rel="preload" as="image" href="/Profile.webp" fetchpriority="high">
      <meta name="title" content="Emmanuel Oguntoke | Full-Stack Web Developer">
      <meta name="description" content="Portfolio of Emmanuel Oguntoke, a Full-Stack Developer specializing in React, Node.js, and PostgreSQL. Creator of the Manual Distribution System.">
      <meta name="keywords" content="Emmanuel Oguntoke, Full-Stack Developer, LAUTECH, React Developer Nigeria, Node.js, PostgreSQL, Web Design">
@@ -31,4 +39,5 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
-</html> 
+</html>  
+
