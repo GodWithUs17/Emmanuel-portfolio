@@ -1,7 +1,7 @@
 
 import Container from "../ui/Container";
 import Button from "../ui/Button";
-import profile from "../assets/Profile.webp";
+import profile from "/Profile.webp";
 
 export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, moveIndicator, setActive }) {
   return (
