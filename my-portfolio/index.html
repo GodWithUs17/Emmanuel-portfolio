@@ -3,26 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/webp" sizes="64x64" href="/favicon.webp" />
-    <link rel="stylesheet" href="/fonts/remixicon.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emmanuel Oguntoke | Full-Stack Web Developer</title>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { background-color: #ffffff; min-height: 100vh; }
-      header, nav {
-        height: 72px; 
-        width: 100%;
-        background-color: #ffffff;
-        border-bottom: 1px solid #f3f4f6;
-      }
-      .lcp-skeleton {
-        width: 240px; 
-        height: 240px; 
-        border-radius: 9999px;
-        background-color: #e5e7eb;
-        margin: 20px auto;
-      }
-    </style>
+     <style>
+       /* 1. Reset & Global */
+       * { box-sizing: border-box; margin: 0; padding: 0; }
+       body { background-color: #ffffff; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; }
+     
+       /* 2. Navbar Skeleton (Matches your React <nav> and container) */
+       nav {
+         width: 100%;
+         background-color: #ffffff;
+         border-bottom: 1px solid #e5e7eb; /* Matches 'border-b' */
+         position: sticky;
+         top: 0;
+         z-index: 50;
+         height: 73px; /* Precise height of your navbar */
+       }
+     
+       .nav-container {
+         max-width: 72rem; /* Matches 'max-w-6xl' */
+         margin: 0 auto;
+         padding: 1rem; /* Matches 'px-4 py-4' */
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+       }
+     
+       /* 3. Logo Skeleton (Prevents text shifting) */
+       .logo-placeholder {
+         font-weight: 700;
+         font-size: 1.25rem; /* Matches 'text-xl' */
+         letter-spacing: -0.05em; /* Matches 'tracking-tighter' */
+         /* Pre-styling the gradient colors so it doesn't jump */
+         color: #9333ea; 
+       }
+     
+       /* 4. Profile Image Skeleton (Updated to match your Hero grid) */
+       .lcp-skeleton {
+         width: 240px; 
+         height: 240px; 
+         border-radius: 9999px;
+         background-color: #f3f4f6;
+         margin: 0 auto;
+         display: block;
+         border: 4px solid #ffffff;
+       }
+     
+       @media (min-width: 768px) {
+         .lcp-skeleton {
+           width: 288px;
+           height: 288px;
+           margin-left: auto;
+           margin-right: 0;
+         }
+       }
+     </style>
      <meta name="title" content="Emmanuel Oguntoke | Full-Stack Web Developer">
      <meta name="description" content="Portfolio of Emmanuel Oguntoke, a Full-Stack Developer specializing in React, Node.js, and PostgreSQL. Creator of the Manual Distribution System.">
      <meta name="keywords" content="Emmanuel Oguntoke, Full-Stack Developer, LAUTECH, React Developer Nigeria, Node.js, PostgreSQL, Web Design">
@@ -42,7 +78,13 @@
      <meta property="twitter:description" content="Aspiring Full-Stack Developer building scalable web applications with React and Node.js.">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <nav>
+        <div class="nav-container">
+          <span class="logo-placeholder">Emmanuel Oguntoke</span>
+        </div>
+      </nav>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>  

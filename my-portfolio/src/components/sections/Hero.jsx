@@ -65,7 +65,7 @@ export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, move
                 alt="Emmanuel Oguntoke"
                 fetchPriority="high"
                 loading="eager"
-                className="w-60 h-60 md:w-72 md:h-72 object-cover rounded-full border-4 border-white shadow-lg"
+                className="lcp-skeleton w-60 h-60 md:w-72 md:h-72 object-cover rounded-full border-4 border-white shadow-lg"
               />
             </div>
           </div>

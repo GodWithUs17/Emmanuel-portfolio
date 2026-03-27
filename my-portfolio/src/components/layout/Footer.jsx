@@ -1,4 +1,5 @@
 import Container from "../ui/Container";
+import { Github, Linkedin, X } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -47,7 +48,7 @@ export default function Footer() {
       aria-label="View my Github Profile"
       className="w-7 h-7 flex items-center justify-center bg-white rounded-full text-zinc-900 shadow-lg transition-all duration-300 hover:bg-purple-600 hover:text-white hover:-translate-y-1"
     >
-      <i className="ri-github-line text-xl"></i>
+      <Github className="w-5 h-5" />
     </a>
     {/* Tooltip */}
     <span className="absolute -top-10 scale-0 transition-all rounded bg-zinc-800 p-2 text-xs text-white group-hover:scale-100 font-medium">
@@ -62,7 +63,7 @@ export default function Footer() {
       aria-label="View my LinkedIn Profile"
       className="w-7 h-7 flex items-center justify-center bg-white rounded-full text-zinc-900 shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white hover:-translate-y-1"
     >
-      <i className="ri-linkedin-line text-xl"></i>
+      <Linkedin className="w-5 h-5" />
     </a>
     <span className="absolute -top-10 scale-0 transition-all rounded bg-zinc-800 p-2 text-xs text-white group-hover:scale-100 font-medium">
       LinkedIn
@@ -77,7 +78,15 @@ export default function Footer() {
 
       className="w-7 h-7 flex items-center justify-center bg-white rounded-full text-zinc-900 shadow-lg transition-all duration-300 hover:bg-black hover:text-white hover:-translate-y-1"
     >
-      <i className="ri-twitter-x-line text-xl"></i>
+      
+      <svg 
+        viewBox="0 0 24 24" 
+        className="w-4 h-4 fill-current" 
+        aria-hidden="true"
+  >    
+        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+     </svg>
+
     </a>
     <span className="absolute -top-10 scale-0 transition-all rounded bg-zinc-800 p-2 text-xs text-white group-hover:scale-100 font-medium">
       Twitter
