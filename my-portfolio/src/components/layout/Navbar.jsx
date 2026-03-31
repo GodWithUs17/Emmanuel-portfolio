@@ -142,23 +142,17 @@ export default function Navbar({ refs, scrollTo }) {
             }`}
           ></span>
         </button>
-{/* 
-          <button
-            onClick={() => handleClick(refs.contact)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-purple-600 hover:text-white-600 transition-all duration-300"
-          >
-            Contact
-          </button> */}
+
           <button 
-  onClick={() => handleClick(refs.contact)}
-  className="relative p-[2px] rounded-full bg-gradient-to-r from-purple-600 to-blue-500 group transition-transform active:scale-95"
->
-  <div className="px-6 py-2 transition-all duration-300 bg-white rounded-full group-hover:bg-transparent">
-    <span className="font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent group-hover:text-white">
-      Contact Me
-    </span>
-  </div>
-</button>
+            onClick={() => handleClick(refs.contact)}
+            className="relative p-[2px] rounded-full bg-gradient-to-r from-purple-600 to-blue-500 group transition-transform active:scale-95"
+         >
+          <div className="px-6 py-2 transition-all duration-300 bg-white rounded-full group-hover:bg-transparent">
+            <span className="font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent group-hover:text-white">
+              Contact Me
+            </span>
+          </div>
+       </button>
 
           {/* Sliding underline indicator */}
           <span
@@ -167,48 +161,79 @@ export default function Navbar({ refs, scrollTo }) {
           />
         </div>
 
-        {/* Mobile Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-2xl"
-        >
-          ☰
-        </button>
-      </div>
 
-      {/* Mobile Menu */}
+
+      {/* Mobile Button (Hamburger) */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="md:hidden text-2xl z-[110]" // Higher z-index so it stays visible
+      >
+        {menuOpen ? "" : "☰"} {/* Hide hamburger when menu is open because we use the 'X' inside */}
+      </button>
+      
+      {/* Mobile Menu (The Drawer) */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col px-4 pb-4 gap-[12px] text-sm">
-          <button onClick={() => handleClick(refs.home, homeRef, "home")} 
-          className="bg-purple-50 py-[8px] px-2 rounded-lg"
-            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "home" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
-            >Home</button>
-          <button onClick={() => handleClick(refs.services, servicesRef, "services")}
-            className="bg-purple-50 py-[8px] px-2 rounded-lg" 
-            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "services" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
-          >
-            Services
-          </button>
-          <button onClick={() => handleClick(refs.process, processRef, "process")} 
-            className="bg-purple-50 py-[8px] px-2 rounded-lg"
-            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "process" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
-          >
-            Process
-          </button>
-          <button onClick={() => handleClick(refs.portfolio, portfolioRef, "portfolio")}
-            className="bg-purple-50 py-[8px] px-2 rounded-lg" 
-            // className={`text-center py-3 px-2 rounded-lg transition-colors ${active === "portfolio" ? "bg-purple-50 text-purple-600 font-semibold" : "text-zinc-600 hover:bg-zinc-50"}`}
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => handleClick(refs.contact, null, "contact")}
-            className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-4 py-2 rounded-md text-center"
-          >
-            Contact
-          </button>
-        </div>
+        <>
+          {/* 1. Background Overlay (Darkens the hero section slightly) */}
+          <div 
+            className="fixed inset-0 bg-black/10 backdrop-blur-sm z-[90]" 
+            onClick={() => setMenuOpen(false)} 
+          />
+      
+          {/* 2. The Floating Frosted Card */}
+          <div className="fixed top-4 right-4 w-[65%] h-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl z-[100] flex flex-col p-4 transition-all animate-in slide-in-from-right duration-300">
+            
+            {/* 3. Close Button (The X) */}
+            <div className="flex justify-end">
+              <button 
+                onClick={() => setMenuOpen(false)}
+                className="p-2 text-zinc-600 hover:text-black text-xl font-bold"
+              >
+                ✕
+              </button>
+            </div>
+      
+            {/* 4. Menu Links */}
+            <div className="flex flex-col gap-[12px] text-sm mt-2">
+              <button 
+                onClick={() => { handleClick(refs.home, homeRef, "home"); setMenuOpen(false); }} 
+                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left text-purple-700 font-medium"
+              >
+                Home
+              </button>
+              
+              <button 
+                onClick={() => { handleClick(refs.services, servicesRef, "services"); setMenuOpen(false); }}
+                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left" 
+              >
+                Services
+              </button>
+              
+              <button 
+                onClick={() => { handleClick(refs.process, processRef, "process"); setMenuOpen(false); }} 
+                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left"
+              >
+                Process
+              </button>
+              
+              <button 
+                onClick={() => { handleClick(refs.portfolio, portfolioRef, "portfolio"); setMenuOpen(false); }}
+                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left" 
+              >
+                Projects
+              </button>
+              
+              <button
+                onClick={() => { handleClick(refs.contact, null, "contact"); setMenuOpen(false); }}
+                className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-4 py-3 rounded-xl text-center font-bold mt-2 shadow-lg"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+        </>
       )}
+</div>
     </nav>
   );
 }
