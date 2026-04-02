@@ -28,7 +28,7 @@ const projects = [
     description: "Developed a QR-based system that enables fast and secure verification of manual purchases. Reduces errors and prevents duplicate claims during distribution.",
     tags: ["React", "Tailwind CSS", "Prisma", "PostgreSQL", "API Integration"],
     image: projectImage3,
-    link: "#",
+    link: "https://manual-distribution-frontend.vercel.app",
   },
 
 ];
