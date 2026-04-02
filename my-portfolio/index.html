@@ -5,7 +5,7 @@
     <link rel="icon" type="image/webp" sizes="64x64" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emmanuel Oguntoke | Full-Stack Web Developer</title>
-    <link rel="preconnect" href="https://emmanuel-portfolio-flame.vercel.app">
+    <link rel="preconnect" href="https://emmanuel-portfolio-flame.vercel.app" crossorigin>
      <meta name="title" content="Emmanuel Oguntoke | Full-Stack Web Developer">
      <meta name="description" content="Portfolio of Emmanuel Oguntoke, a Full-Stack Developer specializing in React, Node.js, and PostgreSQL. Creator of the Manual Distribution System.">
      <meta name="keywords" content="Emmanuel Oguntoke, Full-Stack Developer, LAUTECH, React Developer Nigeria, Node.js, PostgreSQL, Web Design">
@@ -26,12 +26,15 @@
   <body>
     <div id="root">
 
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: center; min-height: 300px; padding-top: 5rem;">
         <img 
           src="/Profile.webp" 
-          class="lcp-skeleton" 
+          class="lcp-skeleton"
+          width="240" 
+          height="240" 
           alt="Emmanuel Oguntoke"
           fetchpriority="high"
+          style="border-radius: 9999px; object-fit: cover;"
         >
       </div>
     </div>
