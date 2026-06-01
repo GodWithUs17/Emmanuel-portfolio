@@ -2,10 +2,19 @@ import Container from "./../ui/Container";
 import projectImage1 from '../assets/SKILL.webp';
 import projectImage2 from '../assets/Mennac.webp';
 import projectImage3 from '../assets/ManualApp.webp';
+import projectImage4 from '../assets/Mufti.avif';
 
 
 
 const projects = [
+  {
+    id: 4,
+    title: "Mufti Laundry – Online Booking System",
+    description: "Developed a responsive online booking system for a local laundry service, allowing customers to schedule pickups and track their orders in real-time.",
+    tags: ["React", "Tailwind CSS", "Prisma", "PostgreSQL", "API Integration"],
+    image: projectImage4,
+    link: "https://mufti-laundry-website.vercel.app",
+  },
   {
     id: 1,
     title: "SkillBridge – Skills Matching Platform",
