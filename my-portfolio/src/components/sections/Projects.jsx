@@ -63,7 +63,7 @@ export default function PortfolioSection({refProp}) {
                 height="400"
                 alt={project.title}
                 loading="lazy"
-                className="w-full h-48 object-cover"
+                className="w-full h-48 object-cover"   
               />
               <div className="p-4">
                 <h3 className="font-semibold text-lg mb-2">{project.title}</h3>
