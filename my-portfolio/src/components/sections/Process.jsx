@@ -1,41 +1,57 @@
 import Container from "../ui/Container";
-import SectionTitle from "../ui/SectionTitle";
-import Accordion from "../ui/Accordion";
-
+import { Search, ClipboardList, Code2, Rocket } from "lucide-react";
+const steps = [
+  {
+    icon: Search,
+    n: "01",
+    title: "Discover",
+    text: "We discuss the goal, audience and constraints so the work solves the right problem.",
+  },
+  {
+    icon: ClipboardList,
+    n: "02",
+    title: "Plan",
+    text: "I map the key pages, user flows and technical approach before implementation.",
+  },
+  {
+    icon: Code2,
+    n: "03",
+    title: "Build",
+    text: "I develop the experience, connect the functionality and keep you informed as it takes shape.",
+  },
+  {
+    icon: Rocket,
+    n: "04",
+    title: "Launch & improve",
+    text: "We test the result, prepare it for launch and identify sensible next improvements.",
+  },
+];
 export default function Process({ refProp }) {
-  const steps = [
-    {
-      title: "1. Discover",
-      content: "We clarify your goals, audience, and business objectives before building anything.",
-    },
-    {
-      title: "2. Plan",
-      content: "We define structure, layout, and technical requirements for clarity and scalability.",
-    },
-    {
-      title: "3. Develop",
-      content: "I build a clean, fast, and structured solution focused on performance.",
-    },
-    {
-      title: "4. Launch & Refine",
-      content: "We test, optimize, and prepare your platform for real-world growth.",
-    },
-  ];
-
   return (
-    <section ref={refProp} className="py-24 scroll-mt-[50px]" id="process">
+    <section ref={refProp} id="process" className="section">
       <Container>
-        <SectionTitle>
-          How We Work
-        </SectionTitle>
-
-        <div className="space-y-4">
-          {steps.map((step, index) => (
-            <Accordion
-              key={index}
-              title={step.title}
-              content={step.content}
-            />
+        <div className="section-intro">
+          <p className="eyebrow">A clear process</p>
+          <h2 className="section-heading">
+            Good work comes from <span>a good process.</span>
+          </h2>
+          <p className="section-description">
+            A collaborative approach that keeps the goal clear from the first
+            conversation to launch.
+          </p>
+        </div>
+        <div className="process-grid">
+          {steps.map(({ icon: Icon, n, title, text }) => (
+            <article className="process-step" key={n}>
+              <div className="process-step-top">
+                <span className="process-icon">
+                  <Icon size={20} />
+                </span>
+                <span>{n}</span>
+              </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
           ))}
         </div>
       </Container>

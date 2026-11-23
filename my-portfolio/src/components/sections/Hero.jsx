@@ -1,75 +1,81 @@
-
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Code2,
+  Layers3,
+  Database,
+} from "lucide-react";
 import Container from "../ui/Container";
-import Button from "../ui/Button";
 import profile from "/Profile.webp";
-
-export default function Hero({ refProp, scrollTo, contactRef, portfolioRef, moveIndicator, setActive }) {
+export default function Hero({ refProp, scrollTo, contactRef, portfolioRef }) {
   return (
-    <section ref={refProp} className="flex items-center pt-20 pb-12 md:pt-24 md:pb-16 scroll-mt-20" id="home">
+    <section ref={refProp} id="home" className="hero-section">
       <Container>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-
-          {/* LEFT SIDE */}
-          <div className="max-w-xl space-y-6">
-
-            <p className="text-sm font-medium text-purple-600">
-              Web Developer • Problem Solver
+        <div className="hero-grid">
+          <div className="hero-content">
+            <p className="eyebrow">
+              <span className="availability-dot" /> FULL-STACK WEB DEVELOPER{" "}
+              <span className="eyebrow-divider">/</span> NIGERIA
             </p>
-
-            <h1 className="text-3xl md:text-4xl font-bold leading-snug text-zinc-900">
-              Websites Built to Convert Visitors Into Customers
+            <h1>
+              I build digital solutions that{" "}
+              <span>move businesses forward.</span>
             </h1>
-
-            <p className="text-base md:text-lg text-zinc-800 leading-relaxed">
-              I design and develop fast, scalable websites that help businesses
-              attract customers and grow online.
+            <p className="hero-lead">
+              I'm Emmanuel — a developer creating high-performing websites and
+              practical web applications that solve real problems.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-
-              <Button
-                onClick={() => {
-                  scrollTo(contactRef);
-                  setActive?.("contact");
-                  moveIndicator?.(contactRef);
-                }}
+            <div className="hero-actions">
+              <button
+                className="button button-primary"
+                onClick={() => scrollTo(contactRef)}
               >
-                Start a Project →
-              </Button>
-
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  scrollTo(portfolioRef);
-                  setActive?.("portfolio");
-                  moveIndicator?.(portfolioRef);
-                }}
+                Start a project <ArrowUpRight size={17} />
+              </button>
+              <button
+                className="button button-quiet"
+                onClick={() => scrollTo(portfolioRef)}
               >
-                View My Work
-              </Button>
+                Explore my work <ArrowDown size={16} />
+              </button>
             </div>
-
-            <p className="text-sm sm:text-base md:text-base lg:text-base text-zinc-800 pt-2 max-w-xl mx-auto">
-              Built with performance, usability, and scalability in mind.
-            </p>
-
+            <div className="hero-stack">
+              <span>
+                <Code2 size={15} /> React
+              </span>
+              <span>
+                <Layers3 size={15} /> Node.js
+              </span>
+              <span>
+                <Database size={15} /> PostgreSQL
+              </span>
+            </div>
           </div>
-
-          {/* RIGHT SIDE IMAGE */}
-          <div className="flex justify-center md:justify-end">
-            <div className="p-2 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500">
+          <div className="hero-visual">
+            <div className="hero-image-halo" />
+            <div className="hero-image-frame">
               <img
                 src={profile}
+                alt="Emmanuel Oguntoke, Full-Stack Web Developer"
                 width="450"
                 height="450"
-                alt="Emmanuel Oguntoke"
                 fetchPriority="high"
-                loading="eager"
-                className="lcp-skeleton w-60 h-60 md:w-72 md:h-72 object-cover rounded-full border-4 border-white shadow-lg"
               />
             </div>
+            <div className="floating-note">
+              <span className="note-icon">✳</span>
+              <span>
+                <strong>Build with purpose</strong>
+                <small>Design · Develop · Deliver</small>
+              </span>
+            </div>
+            <div className="hero-orbit orbit-one" />
+            <div className="hero-orbit orbit-two" />
           </div>
-
+        </div>
+        <div className="hero-bottomline">
+          <span>Building useful things for the web.</span>
+          <span>SCROLL TO EXPLORE ↓</span>
         </div>
       </Container>
     </section>

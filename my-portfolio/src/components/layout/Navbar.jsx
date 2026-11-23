@@ -1,239 +1,63 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
+const links = [
+  ["About", "about"],
+  ["Services", "services"],
+  ["Projects", "portfolio"],
+  ["Skills", "skills"],
+  ["Process", "process"],
+];
 export default function Navbar({ refs, scrollTo }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState("home");
-  const [indicatorStyle, setIndicatorStyle] = useState({});
-
-  // Refs for each nav link
-  const homeRef = useRef(null);
-  const servicesRef = useRef(null);
-  const portfolioRef = useRef(null);
-  const processRef = useRef(null);
-
-  // Move the underline indicator
-  const moveIndicator = (linkRef) => {
-    if (!linkRef?.current) return;
-    const { offsetLeft, offsetWidth } = linkRef.current;
-    setIndicatorStyle({ left: offsetLeft, width: offsetWidth });
+  const [open, setOpen] = useState(false);
+  const go = (key) => {
+    scrollTo(refs[key]);
+    setOpen(false);
   };
-
-
-  const handleClick = (sectionRef, linkRef, id) => {
-    setMenuOpen(false);
-
-    setActive(id);
-    if (linkRef) moveIndicator(linkRef);
-
-    setTimeout(() => {
-      scrollTo(sectionRef);
-    }, 10);
-  };
-
-  // Update indicator on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const id = entry.target.id;
-          if (id === "home") { moveIndicator(homeRef); setActive("home"); }
-          if (id === "services") { moveIndicator(servicesRef); setActive("services"); }
-          if (id === "portfolio") { moveIndicator(portfolioRef); setActive("portfolio"); }
-          if (id === "process") { moveIndicator(processRef); setActive("process"); }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    const sections = ["home", "services", "portfolio", "process"];
-    sections.forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Recalculate indicator on window resize
-  useEffect(() => {
-    const updateIndicator = () => {
-      if (active === "home") moveIndicator(homeRef);
-      if (active === "services") moveIndicator(servicesRef);
-      if (active === "portfolio") moveIndicator(portfolioRef);
-      if (active === "process") moveIndicator(processRef);
-    };
-    window.addEventListener("resize", updateIndicator);
-    return () => window.removeEventListener("resize", updateIndicator);
-  }, [active]);
-
   return (
-    <nav className="w-full border-b bg-white sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl tracking-tighter transition-all duration-500
-          bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent ">
-          Emmanuel Oguntoke
-        </h1>
-
-        {/* Desktop Menu */}
-        <div className="relative hidden md:flex gap-6 text-sm items-center">
-
+    <header className="site-header">
+      <nav className="site-container nav-wrap" aria-label="Main navigation">
         <button
-          ref={homeRef}
-          onClick={() => handleClick(refs.home, homeRef, "home")}
-          className={`relative pb-1 transition-colors duration-300 group ${
-            active === "home" ? "text-purple-600 font-semibold" : "text-zinc-900"
-          }`}
+          className="brand-mark"
+          onClick={() => go("home")}
+          aria-label="Back to home"
         >
-          Home
-          <span 
-            className={`absolute bottom-0 left-1/2 h-0.5 bg-purple-600 transition-all duration-300 -translate-x-1/2 ${
-              active === "home" ? "w-0" : "w-0 group-hover:w-full"
-            }`}
-          ></span>
+          <span>EO</span>
+          <span className="brand-copy">
+            Emmanuel Oguntoke<small>dev_godwithus</small>
+          </span>
         </button>
-
-       <button
-          ref={servicesRef}
-          onClick={() => handleClick(refs.services, servicesRef, "services")}
-          className={`relative pb-1 transition-colors duration-300 group ${
-            active === "services" ? "text-purple-600 font-semibold" : "text-zinc-900"
-          }`}
-        >
-          Services
-          <span 
-            className={`absolute bottom-0 left-1/2 h-0.5 bg-purple-600 transition-all duration-300 -translate-x-1/2 ${
-              active === "services" ? "w-0" : "w-0 group-hover:w-full"
-            }`}
-          ></span>
-        </button>
-
-
-         
-        <button
-          ref={portfolioRef}
-          onClick={() => handleClick(refs.portfolio, portfolioRef, "portfolio")}
-          className={`relative pb-1 transition-colors duration-300 group ${
-            active === "portfolio" ? "text-purple-600 font-semibold" : "text-zinc-900"
-          }`}
-        >
-          Projects
-          
-          <span 
-            className={`absolute bottom-0 left-1/2 h-0.5 bg-purple-600 transition-all duration-300 -translate-x-1/2 ${
-              active === "portfolio" 
-                ? "w-0" // When active (clicked), keep width at 0
-                : "w-0 group-hover:w-full" // When NOT active, allow hover to grow to 100%
-            }`}
-          ></span>
-        </button>
-
-        <button
-          ref={processRef}
-          onClick={() => handleClick(refs.process, processRef, "process")}
-          className={`relative pb-1 transition-colors duration-300 group ${
-            active === "process" ? "text-purple-600 font-semibold" : "text-zinc-900"
-          }`}
-        >
-          Process
-          <span 
-            className={`absolute bottom-0 left-1/2 h-0.5 bg-purple-600 transition-all duration-300 -translate-x-1/2 ${
-              active === "process" ? "w-0" : "w-0 group-hover:w-full"
-            }`}
-          ></span>
-        </button>
-
-          <button 
-            onClick={() => handleClick(refs.contact)}
-            className="relative p-[2px] rounded-full bg-gradient-to-r from-purple-600 to-blue-500 group transition-transform active:scale-95"
-         >
-          <div className="px-6 py-2 transition-all duration-300 bg-white rounded-full group-hover:bg-transparent">
-            <span className="font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent group-hover:text-white">
-              Contact Me
-            </span>
-          </div>
-       </button>
-
-          {/* Sliding underline indicator */}
-          <span
-            className="absolute bottom-0 h-[2px] bg-purple-600 transition-all duration-300"
-            style={indicatorStyle}
-          />
+        <div className="desktop-nav">
+          {links.map(([label, key]) => (
+            <button key={key} onClick={() => go(key)}>
+              {label}
+            </button>
+          ))}
+          <button className="nav-cta" onClick={() => go("contact")}>
+            Let's talk <ArrowUpRight size={15} />
+          </button>
         </div>
-
-
-
-      {/* Mobile Button (Hamburger) */}
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="md:hidden text-2xl z-[110]" // Higher z-index so it stays visible
-      >
-        {menuOpen ? "" : "☰"} {/* Hide hamburger when menu is open because we use the 'X' inside */}
-      </button>
-      
-      {/* Mobile Menu (The Drawer) */}
-      {menuOpen && (
-        <>
-          {/* 1. Background Overlay (Darkens the hero section slightly) */}
-          <div 
-            className="fixed inset-0 bg-black/10 backdrop-blur-sm z-[90]" 
-            onClick={() => setMenuOpen(false)} 
-          />
-      
-          {/* 2. The Floating Frosted Card */}
-          <div className="fixed top-4 right-4 w-[65%] h-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl z-[100] flex flex-col p-4 transition-all animate-in slide-in-from-right duration-300">
-            
-            {/* 3. Close Button (The X) */}
-            <div className="flex justify-end">
-              <button 
-                onClick={() => setMenuOpen(false)}
-                className="p-2 text-zinc-600 hover:text-black text-xl font-bold"
-              >
-                ✕
+        <button
+          className="mobile-menu-button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+        {open && (
+          <div className="mobile-nav">
+            {links.map(([label, key]) => (
+              <button key={key} onClick={() => go(key)}>
+                {label}
               </button>
-            </div>
-      
-            {/* 4. Menu Links */}
-            <div className="flex flex-col gap-[12px] text-sm mt-2">
-              <button 
-                onClick={() => { handleClick(refs.home, homeRef, "home"); setMenuOpen(false); }} 
-                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left text-purple-700 font-medium"
-              >
-                Home
-              </button>
-              
-              <button 
-                onClick={() => { handleClick(refs.services, servicesRef, "services"); setMenuOpen(false); }}
-                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left" 
-              >
-                Services
-              </button>
-              
-              <button 
-                onClick={() => { handleClick(refs.process, processRef, "process"); setMenuOpen(false); }} 
-                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left"
-              >
-                Process
-              </button>
-              
-              <button 
-                onClick={() => { handleClick(refs.portfolio, portfolioRef, "portfolio"); setMenuOpen(false); }}
-                className="bg-purple-50/50 py-[10px] px-3 rounded-lg text-left" 
-              >
-                Projects
-              </button>
-              
-              <button
-                onClick={() => { handleClick(refs.contact, null, "contact"); setMenuOpen(false); }}
-                className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-4 py-3 rounded-xl text-center font-bold mt-2 shadow-lg"
-              >
-                Contact
-              </button>
-            </div>
+            ))}
+            <button className="nav-cta" onClick={() => go("contact")}>
+              Let's talk <ArrowUpRight size={15} />
+            </button>
           </div>
-        </>
-      )}
-</div>
-    </nav>
+        )}
+      </nav>
+    </header>
   );
 }

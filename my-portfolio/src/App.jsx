@@ -1,108 +1,197 @@
-import { useEffect, useRef, useState } from "react";
-
-import Hero from "./components/sections/Hero";
-import Services from "./components/sections/Services";
-import Process from "./components/sections/Process";
-import PortfolioSection from "./components/sections/Projects";
+import { useEffect, useRef } from "react";
+import {
+  SiReact,
+  SiJavascript,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiPrisma,
+  SiGit,
+  SiGithub,
+  SiVercel,
+  SiSupabase,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import Hero from "./components/sections/Hero";
+import Services from "./components/sections/Services";
+import PortfolioSection from "./components/sections/Projects";
+import Process from "./components/sections/Process";
 import Contact from "./components/sections/Contact";
 
-function Loader() {
+function About({ refProp }) {
   return (
-    <div className="loader-screen">
-      <div className="loader-orb" aria-hidden="true" />
-
-      <div className="loader-card">
-        <div className="loader-badge">EO</div>
-
-        <div className="loader-copy">
-          <p className="loader-kicker">Crafting digital experiences</p>
-          <h2>Emmanuel Oguntoke</h2>
+    <section ref={refProp} id="about" className="section section-soft">
+      <div className="site-container about-grid">
+        <div>
+          <p className="eyebrow">A little about me</p>
+          <h2 className="section-heading">
+            Thoughtful development.
+            <br />
+            <span>Practical results.</span>
+          </h2>
         </div>
-
-        <div className="loader-spinner" aria-label="Loading portfolio" />
-
-        <div className="loader-progress">
-          <div className="loader-progress-bar" />
+        <div className="about-copy">
+          <p>
+            I'm Emmanuel Oguntoke, a Full-Stack Web Developer focused on
+            building useful digital products for businesses and people.
+          </p>
+          <p>
+            I enjoy turning complex workflows into clear, reliable experiences —
+            from responsive customer-facing websites to applications with APIs,
+            databases and administrative tools.
+          </p>
+          <p>
+            My approach is straightforward: understand the problem, build with
+            purpose, and keep improving the experience after launch.
+          </p>
+          <a
+            className="text-link"
+            href="https://github.com/GodWithUs17"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Explore my GitHub <span>↗</span>
+          </a>
         </div>
       </div>
+    </section>
+  );
+}
+
+function Skills({ refProp }) {
+  const groups = [
+    {
+      title: "Frontend",
+      items: [
+        ["React", SiReact],
+        ["JavaScript", SiJavascript],
+        ["Tailwind CSS", SiTailwindcss],
+        ["HTML5", SiHtml5],
+        ["CSS3", SiCss],
+      ],
+    },
+    {
+      title: "Backend",
+      items: [
+        ["Node.js", SiNodedotjs],
+        ["Express.js", SiExpress],
+        ["REST APIs", TbApi],
+      ],
+    },
+    {
+      title: "Data & ORM",
+      items: [
+        ["PostgreSQL", SiPostgresql],
+        ["Prisma", SiPrisma],
+      ],
+    },
+    {
+      title: "Tools & Platforms",
+      items: [
+        ["Git", SiGit],
+        ["GitHub", SiGithub],
+        ["Vercel", SiVercel],
+        ["Supabase", SiSupabase],
+      ],
+    },
+  ];
+  return (
+    <section ref={refProp} id="skills" className="section">
+      <div className="site-container">
+        <div className="section-intro">
+          <p className="eyebrow">My toolkit</p>
+          <h2 className="section-heading">
+            Technology I use to <span>build and ship.</span>
+          </h2>
+          <p className="section-description">
+            A practical stack for creating responsive interfaces, dependable
+            backends and data-driven applications.
+          </p>
+        </div>
+        <div className="skills-grid">
+          {groups.map(({ title, items }) => (
+            <article className="skill-card" key={title}>
+              <h3>{title}</h3>
+              <div className="skill-items">
+                {items.map(([name, Icon]) => (
+                  <div className="skill-item" key={name}>
+                    <Icon aria-hidden="true" />
+                    <span>{name}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function App() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".section-intro, .about-grid > *, .service-card, .project-card, .skill-card, .process-step, .contact-grid > *, .footer-cta-inner",
+    );
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach((element) => element.classList.add("animate-in"));
+      return;
+    }
+
+    elements.forEach((element) => element.classList.add("animate-ready"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -32px" },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const refs = {
+    home: useRef(null),
+    about: useRef(null),
+    services: useRef(null),
+    portfolio: useRef(null),
+    skills: useRef(null),
+    process: useRef(null),
+    contact: useRef(null),
+  };
+  const scrollTo = (ref) =>
+    ref?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  return (
+    <div className="app-shell">
+      <Navbar refs={refs} scrollTo={scrollTo} />
+      <main>
+        <Hero
+          refProp={refs.home}
+          scrollTo={scrollTo}
+          contactRef={refs.contact}
+          portfolioRef={refs.portfolio}
+        />
+        <About refProp={refs.about} />
+        <Services refProp={refs.services} />
+        <PortfolioSection refProp={refs.portfolio} />
+        <Skills refProp={refs.skills} />
+        <Process refProp={refs.process} />
+        <Contact refProp={refs.contact} />
+      </main>
+      <Footer />
     </div>
   );
 }
-
-function App() {
-  const homeRef = useRef(null);
-  const servicesRef = useRef(null);
-  const portfolioRef = useRef(null);
-  const processRef = useRef(null);
-  const contactRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => setIsLoading(false), 1200);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  const scrollTo = (ref) => {
-    ref.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  const refs = {
-    home: homeRef,
-    services: servicesRef,
-    portfolio: portfolioRef,
-    process: processRef,
-    contact: contactRef,
-  };
-
-  const [moveIndicator, setMoveIndicator] = useState(null);
-  const [active, setActive] = useState("home");
-
-  return (
-    <>
-      <div
-        className={isLoading ? "loader-screen loader-screen--visible" : "loader-screen loader-screen--hidden"}
-        aria-live="polite"
-      >
-        <Loader />
-      </div>
-
-      <div
-        className={isLoading ? "app-shell app-shell--hidden" : "app-shell app-shell--visible"}
-        aria-live="polite"
-      >
-        <Navbar
-          scrollTo={scrollTo}
-          refs={refs}
-          active={active}
-          setActive={setActive}
-          setMoveIndicator={setMoveIndicator}
-        />
-
-        <main>
-          <Hero
-            refProp={homeRef}
-            scrollTo={scrollTo}
-            contactRef={contactRef}
-            portfolioRef={portfolioRef}
-            moveIndicator={moveIndicator}
-            setActive={setActive}
-          />
-
-          <Services refProp={servicesRef} />
-          <PortfolioSection refProp={portfolioRef} />
-          <Process refProp={processRef} />
-          <Contact refProp={contactRef} />
-        </main>
-
-        <Footer />
-      </div>
-    </>
-  );
-}
-
-export default App;

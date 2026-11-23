@@ -1,6 +1,5 @@
 export default function SectionTitle({ children, align = "center" }) {
-  const alignment =
-    align === "left" ? "text-left" : "text-center";
+  const alignment = align === "left" ? "text-left" : "text-center";
 
   return (
     <h2

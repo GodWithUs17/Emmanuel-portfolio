@@ -1,96 +1,128 @@
-import Container from "./../ui/Container";
-import projectImage1 from '../assets/SKILL.webp';
-import projectImage2 from '../assets/Mennac.webp';
-import projectImage3 from '../assets/ManualApp.webp';
-import projectImage4 from '../assets/Mufti.avif';
-
-
-
+import Container from "../ui/Container";
+import projectImage1 from "../assets/SKILL.webp";
+import projectImage2 from "../assets/Mennac.webp";
+import projectImage3 from "../assets/ManualApp.webp";
+import projectImage4 from "../assets/Mufti.avif";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 const projects = [
   {
-    id: 4,
-    title: "Mufti Laundry – Online Booking System",
-    description: "Developed a responsive online booking system for a local laundry service, allowing customers to schedule pickups and track their orders in real-time.",
-    tags: ["React", "Tailwind CSS", "Prisma", "PostgreSQL", "API Integration"],
+    id: "manual",
+    number: "01",
+    title: "LAUTECH Manual Distribution System",
+    type: "Full-stack application",
+    description:
+      "A QR-enabled purchasing and distribution workflow designed to make manual sales, receipt verification and collection tracking easier to manage.",
+    tags: ["React", "Node.js", "Express", "Prisma", "PostgreSQL"],
+    image: projectImage3,
+    link: "https://manual-distribution-frontend.vercel.app",
+    featured: true,
+  },
+  {
+    id: "mufti",
+    number: "02",
+    title: "Mufti Laundry",
+    type: "Booking & service platform",
+    description:
+      "A responsive laundry booking experience that helps customers schedule pickups and follow their orders, with supporting business workflows.",
+    tags: ["React", "Tailwind CSS", "Prisma", "PostgreSQL"],
     image: projectImage4,
     link: "https://mufti-laundry-website.vercel.app",
   },
   {
-    id: 1,
-    title: "SkillBridge – Skills Matching Platform",
-    description: "Designed a platform landing page that connects users to real opportunities and encourages engagement. Structured to clearly communicate value and guide users toward taking action.",
-    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    id: "skillbridge",
+    number: "03",
+    title: "SkillBridge",
+    type: "Platform landing page",
+    description:
+      "A landing page concept connecting learners with practical opportunities through clear messaging, structured content and focused calls to action.",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive UI"],
     image: projectImage1,
     link: "https://godwithus17.github.io/SkillBridge/",
   },
   {
-    id: 2,
-    title: "Meenaconc – Conversion-Focused Landing Page",
-    description: "Built a clean landing page that improves user flow and guides visitors toward taking action. Designed to increase engagement through clear structure and intuitive layout.",
-    tags: ["HTML", "CSS", "JavaScript", "Node.js", "API Integration"],
+    id: "meenacon",
+    number: "04",
+    title: "Meenaconc Heart Show",
+    type: "Campaign landing page",
+    description:
+      "A warm, conversion-focused landing page built to introduce an event, communicate its message and guide visitors toward taking action.",
+    tags: ["HTML", "CSS", "JavaScript", "Node.js"],
     image: projectImage2,
     link: "https://godwithus17.github.io/MeenaconcHeartShow/",
   },
-  {
-    id: 3,
-    title: "Manual App – QR-Based Distribution System",
-    description: "Developed a QR-based system that enables fast and secure verification of manual purchases. Reduces errors and prevents duplicate claims during distribution.",
-    tags: ["React", "Tailwind CSS", "Prisma", "PostgreSQL", "API Integration"],
-    image: projectImage3,
-    link: "https://manual-distribution-frontend.vercel.app",
-  },
-
 ];
-
-export default function PortfolioSection({refProp}) {
+export default function PortfolioSection({ refProp }) {
   return (
-    <section ref={refProp} className="py-[45px] bg-gray-50 scroll-mt-20"id="portfolio">
+    <section ref={refProp} id="portfolio" className="section section-soft">
       <Container>
-        <h2 className="text-3xl font-bold mb-2 text-center">My Portfolio</h2>
-        <p className="text-center text-gray-700 mb-12">
-          A selection of projects I've worked on. Click to explore more.
-        </p>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="section-intro section-intro-row">
+          <div>
+            <p className="eyebrow">Selected work</p>
+            <h2 className="section-heading">
+              A few things <span>I've built.</span>
+            </h2>
+          </div>
+          <p className="section-description">
+            A selection of practical projects, experiments and digital
+            experiences. Each one starts with a problem worth solving.
+          </p>
+        </div>
+        <div className="project-grid">
           {projects.map((project) => (
-            <div
+            <article
+              className={`project-card ${project.featured ? "project-featured" : ""}`}
               key={project.id}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
             >
-              <img
-                src={project.image}
-                width="600"
-                height="400"
-                alt={project.title}
-                loading="lazy"
-                className="w-full h-48 object-cover"   
-              />
-              <div className="p-4">
-                <h3 className="font-semibold text-lg mb-2">{project.title}</h3>
-                <p className="text-gray-700 text-sm mb-3">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-3">
+              <a
+                className="project-image"
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${project.title}`}
+              >
+                <img
+                  src={project.image}
+                  alt={`${project.title} project preview`}
+                  loading="lazy"
+                />
+                <span className="image-link">
+                  <ExternalLink size={17} />
+                </span>
+              </a>
+              <div className="project-body">
+                <div className="project-meta">
+                  <span>{project.type}</span>
+                  <span>{project.number}</span>
+                </div>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="project-tags">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded"
-                    >
-                      {tag}
-                    </span>
+                    <span key={tag}>{tag}</span>
                   ))}
                 </div>
                 <a
+                  className="text-link"
                   href={project.link}
-                  aria-label={`View details for ${project.title}`}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 font-medium hover:underline"
+                  rel="noreferrer"
                 >
-                  View Project →
+                  View live project <ArrowUpRight size={16} />
                 </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
+        <p className="projects-note">
+          Want to see more?{" "}
+          <a
+            href="https://github.com/GodWithUs17"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Explore my GitHub <ArrowUpRight size={14} />
+          </a>
+        </p>
       </Container>
     </section>
   );
